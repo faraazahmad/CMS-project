@@ -1,0 +1,94 @@
+<div class="container">
+	<br><br><br>
+	<h1 class="title is-size-1">Sign up</h1>
+
+	<div class="row">
+	  <div>
+	    <%= form_for(@citizen) do |f| %>
+	    	<%= render "shared/error_messages" %>
+	      
+			<div class="field">
+			  <label class="label">Name</label>
+			  <div class="control">
+			    <%= f.text_field :name, class: "input" %>
+			  </div>
+			</div>
+
+			<div class="field">
+				<label class="label">Gender</label>
+				<div class="control">
+					<%= f.radio_button(:gender, "male") %>
+					<%= f.label(:male, "Male") %>
+					&emsp;
+					<%= f.radio_button(:gender, "female") %>
+					<%= f.label(:female, "Female") %>
+					&emsp;
+					<%= f.radio_button(:gender, "other") %>
+					<%= f.label(:other, "Other") %>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Date of Birth</label>
+				<div class="control">
+			      <%= f.date_field :dob, class: "input" %>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Phone Number</label>
+				<div class="control">
+			      <%= f.phone_field :phone_number, class: "input" %>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Occupation</label>
+				<div class="control">
+			      <%= f.text_field :occupation, class: "input" %>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Marital Status</label>
+				<div class="control">
+			      <%= f.check_box :marital_status, class: "checkbox" %>
+			      <%= f.label :marital_status, "Currently married" %>
+				</div>
+			</div>			
+
+			<div class="field">
+				<label class="label">Address</label>
+				<div class="control">
+			      <%= f.text_field :address, class: "textarea" %>
+				</div>
+			</div>
+
+	      	<div class="field">
+				<label class="label">Password (minimum 12 characters)</label>
+				<div class="control">
+			      <%= f.password_field :password, class: "input" %>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Re enter your password</label>
+				<div class="control">
+			      <%= f.password_field :password_confirmation, class: "input" %>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Does the citizen have admin rights?</label>
+				<div class="control">
+			      <%= f.check_box :admin, class: "checkbox" %>
+			      <%= f.label :admin, "Has admin rights" %>
+				</div>
+			</div>
+
+	      <%= f.submit "Create my account", class: "button is-link" %>
+	    <% end %>
+	  </div>
+	</div>
+	<br><br><br>
+</div>

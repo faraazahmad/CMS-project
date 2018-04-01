@@ -1,0 +1,21 @@
+#home-tiles {
+    background: linear-gradient( hsl(217, 71%, 53%), #2AF8CD);
+    padding: 2em;
+    .is-child {
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease-out
+    }
+    .is-child:hover {
+        transform: scale(1.05)
+    }
+}
+
+.home-section {
+    padding: 3em;
+    .column {
+        text-align: center;
+        p {
+            font-weight: 100;
+        }
+    }
+}

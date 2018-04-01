@@ -1,0 +1,19 @@
+<% if @citizen.errors.any? %>
+  <div id="error_explanation">
+    <div class="is-size-4 is-red">
+      The form contains <%= pluralize(@citizen.errors.count, "error") %>.
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <div class="content">
+          <ul>
+          <% @citizen.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+          
+        </div>
+      </article>
+    </div>
+  </div>
+<% end %>

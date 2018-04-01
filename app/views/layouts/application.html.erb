@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cmsproject</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render "partials/navbar" %>
+
+    <div class="flash tile is-parent">
+      <% flash.each do |message_type, message| %>
+        <!-- <div class="tile is-child is-<%= message_type %>"><%= message %></div>-->
+          <article class="tile is-child notification is-<%= message_type %>">
+            <div class="content">
+              <%= message %>              
+            </div>
+          </article>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+    <%= render "partials/footer" %>
+  </body>
+</html>

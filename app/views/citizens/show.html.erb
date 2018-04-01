@@ -1,0 +1,73 @@
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-10">
+          <h1 class="title">
+            <%= @citizen.name %>
+          </h1>
+          <h2 class="subtitle">
+            UID: 
+            <%= @citizen.id %>
+          </h2>          
+        </div>
+        <div class="column is-2">
+          <% if logged_in? && current_citizen.admin %>
+            <%= link_to "Update Details", edit_citizen_path(@citizen), class: "button is-large is-link" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="details">
+  <div class="container">
+    <div>
+      <a class="subtitle">
+        <strong>Gender: </strong>
+        <%= @citizen.gender %>
+      </a>
+    </div>
+
+    <div>
+      <a class="subtitle">
+        <strong>Address: </strong>
+        <%= @citizen.address %>
+      </a>
+    </div>
+
+    <div>
+      <a class="subtitle">
+        <strong>Occupation: </strong>
+        <%= @citizen.occupation %>
+      </a>
+    </div>
+
+    <div>
+      <a class="subtitle">
+        <strong>Marital Status: </strong>
+        <% if @citizen.marital_status %>
+          Married
+        <% else %>
+          Un-married
+        <% end %>
+      </a>
+    </div>
+
+    <div>
+      <a class="subtitle">
+        <strong>Phone number: </strong>
+        <%= @citizen.phone_number %>
+      </a>
+    </div>
+
+    <div>
+      <a class="subtitle">
+        <strong>Is admin: </strong>
+        <%= @citizen.admin %>
+      </a>
+    </div>
+
+  </div>
+</div>

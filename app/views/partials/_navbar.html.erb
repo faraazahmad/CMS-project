@@ -1,0 +1,69 @@
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <strong>
+              Citizen Management System
+            </strong>
+          </a>
+          <span class="button navbar-burger" data-target="navbar-menu-top">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+
+        </div>
+
+        <div class="navbar-menu" id="navbar-menu-top">
+
+          <div class="navbar-start">
+
+          </div>
+
+          <div class="navbar-end">
+            <a class="navbar-item" href="/">
+              Home
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Benefits
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item">
+                  Education
+                </a>
+                <a class="navbar-item">
+                  Healthcare
+                </a>
+                <a class="navbar-item">
+                  Subsidies
+                </a>
+              </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                About Us
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item">
+                  Vision
+                </a>
+                <a class="navbar-item">
+                  Mission
+                </a>
+              </div>
+            </div>
+            <% if logged_in? %>
+              <% if current_citizen.admin %>
+                <%= link_to "Register", new_citizen_path, class: "navbar-item" %>
+              <% end %>
+              <%= link_to "My Profile", current_citizen, class: "navbar-item" %>
+              <%= link_to "Log out", logout_path, class: "navbar-item", method: :delete %>
+            <% else %>
+              <%= link_to "Sign In", login_path, class: "navbar-item" %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </nav>
