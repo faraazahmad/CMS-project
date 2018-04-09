@@ -69,5 +69,47 @@
       </a>
     </div>
 
+    <br>
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              LPG Subsidy
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <% if @citizen.lpg_subsidy_id %>
+                <p class="subtitle">
+                  <strong>LPG Subsidy ID:</strong>
+                  <%= @citizen.lpg_subsidy_id %>
+                </p>
+                <p class="subtitle">
+                  <strong>Registration Date: </strong>
+                  <%= LpgSubsidy.find(@citizen.lpg_subsidy_id).created_at %>
+                </p>
+              <% else %>
+                <p class="subtitle">Not registered</p>
+              <% end %>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <% if @citizen.lpg_subsidy_id %>
+              <%= link_to 'Unregister', 
+                    LpgSubsidy.find(@citizen.lpg_subsidy_id), 
+                    method: :delete, 
+                    data: { confirm: 'Are you sure?' }, 
+                    class: "card-footer-item" %>
+            <% else %>
+              <%= link_to "Register",
+                  new_lpg_subsidy_path,
+                  class: "card-footer-item" %>
+            <% end %>
+          </footer>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

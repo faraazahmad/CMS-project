@@ -7,7 +7,7 @@ class CitizensController < ApplicationController
   end
 
   def show
-    if logged_in? && (current_citizen.admin || current_citizen.id = params[:id])
+    if logged_in? && (current_citizen.admin == true || current_citizen.id = params[:id])
       @citizen = Citizen.find(params[:id])
     else
       flash[:warning] = "You can only view your own details"

@@ -1,0 +1,33 @@
+<%= form_with(model: lpg_subsidy, local: true) do |form| %>
+  
+  <% if lpg_subsidy.errors.any? %>
+    <div id="error_explanation">
+      <div class="is-size-4 is-red">
+        The form contains <%= pluralize(lpg_subsidy.errors.count, "error") %>.
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-danger">
+          <div class="content">
+            <ul>
+            <% lpg_subsidy.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+            
+          </div>
+        </article>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label class="label">Citizen ID</label>
+    <div class="control">
+      <%= form.text_field :citizen_id, class: "input" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Confirm registration", class: "button is-link" %>
+  </div>
+<% end %>

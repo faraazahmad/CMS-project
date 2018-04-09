@@ -3,10 +3,32 @@
     padding: 2em;
     .is-child {
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        transition: transform 0.2s ease-out
-    }
-    .is-child:hover {
-        transform: scale(1.05)
+        transition: transform 0.2s ease-out;
+        background-size: cover;
+        background-position: 50%;
+        padding: 0;
+        .holder {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1.5em;
+            width: 100%;
+            height: 100%;
+            transition: background 0.2s ease-out;
+            border-radius: 2.5px;
+            .subtitle {
+                opacity: 0;
+                transition: opacity 0.15s ease-out;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            .holder {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            .subtitle {
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -18,4 +40,29 @@
             font-weight: 100;
         }
     }
+}
+
+#unified {
+    background-image: url(image_path('records.jpg'));
+}
+
+#peace {
+    background-image: url(image_path('peace.jpg'));
+}
+
+#benefits {
+    background-image: url(image_path('benefits.jpg'));
+}
+
+#healthcare {
+    background-image: url(image_path('healthcare.jpg'));
+}
+
+#subsidies {
+    background-image: url(image_path('subsidies.jpg'));
+    background-position: 50% 45% !important;
+}
+
+#education {
+    background-image: url(image_path('education.jpg'));
 }

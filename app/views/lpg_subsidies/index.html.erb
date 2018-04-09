@@ -1,0 +1,34 @@
+<div class="container">
+  <br><br><br>
+  <h1 class="title is-size-1">Lpg Subsidiy subscribers</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Citizen ID</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @lpg_subsidies.each do |lpg_subsidy| %>
+        <tr>
+          <td><%= lpg_subsidy.citizen_id %></td>
+          
+          
+          <td>
+            <%= link_to 'Remove', 
+                lpg_subsidy, 
+                method: :delete, 
+                data: { confirm: 'Are you sure?' }, 
+                class: "button" %>      
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Lpg Subsidy Subscription', new_lpg_subsidy_path, class: "button is-link" %>
+</div>
