@@ -1,0 +1,22 @@
+<%= form_with(model: elec_subsidy, local: true) do |form| %>
+  <% if elec_subsidy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(elec_subsidy.errors.count, "error") %> prohibited this elec_subsidy from being saved:</h2>
+
+      <ul>
+      <% elec_subsidy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :citizen_id %>
+    <%= form.text_field :citizen_id, id: :elec_subsidy_citizen_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Edu Subsidies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Citizen</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @edu_subsidies.each do |edu_subsidy| %>
+      <tr>
+        <td><%= edu_subsidy.citizen %></td>
+        <td><%= link_to 'Show', edu_subsidy %></td>
+        <td><%= link_to 'Edit', edit_edu_subsidy_path(edu_subsidy) %></td>
+        <td><%= link_to 'Destroy', edu_subsidy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Edu Subsidy', new_edu_subsidy_path %>

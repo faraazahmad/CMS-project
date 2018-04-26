@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408080901) do
+ActiveRecord::Schema.define(version: 20180409050955) do
 
   create_table "citizens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 20180408080901) do
     t.index ["phone_number"], name: "index_citizens_on_phone_number", unique: true
   end
 
+  create_table "edu_subsidies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "citizen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["citizen_id"], name: "index_edu_subsidies_on_citizen_id"
+  end
+
+  create_table "elec_subsidies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "citizen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["citizen_id"], name: "index_elec_subsidies_on_citizen_id"
+  end
+
   create_table "lpg_subsidies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "citizen_id"
     t.datetime "created_at", null: false
@@ -37,5 +51,7 @@ ActiveRecord::Schema.define(version: 20180408080901) do
   end
 
   add_foreign_key "citizens", "lpg_subsidies"
+  add_foreign_key "edu_subsidies", "citizens"
+  add_foreign_key "elec_subsidies", "citizens"
   add_foreign_key "lpg_subsidies", "citizens"
 end

@@ -15,4 +15,6 @@ class Citizen < ApplicationRecord
 	validates :password, length: { minimum: 12 }, allow_nil: true
 
 	has_many :lpg_subsidy
+	has_many :elec_subsidy
+	has_many :edu_subsidy
 end

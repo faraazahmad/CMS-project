@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :edu_subsidies
+  resources :elec_subsidies
   resources :lpg_subsidies
   get 'sessions/new'
 
@@ -13,5 +15,7 @@ Rails.application.routes.draw do
 
   root to: 'site#index'
 
-  get '/subsidies/lpg', to: 'lpg_subsidies#index'
+  get '/subsidies/lpg',     to: 'lpg_subsidies#index'
+  get '/subsidies/elec',    to: 'elec_subsidies#index'
+  get '/subsidies/edu',     to: 'edu_subsidies#index'
 end

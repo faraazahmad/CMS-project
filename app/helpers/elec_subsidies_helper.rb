@@ -1,0 +1,2 @@
+module ElecSubsidiesHelper
+end

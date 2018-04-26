@@ -1,0 +1,2 @@
+module EduSubsidiesHelper
+end
