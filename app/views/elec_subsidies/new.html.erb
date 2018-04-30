@@ -1,5 +1,16 @@
-<h1>New Elec Subsidy</h1>
-
-<%= render 'form', elec_subsidy: @elec_subsidy %>
-
-<%= link_to 'Back', elec_subsidies_path %>
+<div class="container">
+	<br><br><br>
+	<div class="form-container">
+		<div class="card">
+		  <header class="card-header">
+		    <p class="card-header-title">
+		      New Electricity subscription
+		    </p>
+		  </header>
+			<%= render 'form', elec_subsidy: @elec_subsidy %>
+			<footer class="card-footer">
+				<%= link_to 'Back', elec_subsidies_path, class: "card-footer-item" %>
+		  </footer>
+		</div>
+	</div>
+</div>

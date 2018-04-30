@@ -1,14 +1,13 @@
 class EduSubsidiesController < ApplicationController
   before_action :set_edu_subsidy, only: [:show, :edit, :update, :destroy]
+  before_action :admin_logged_in
 
   # GET /edu_subsidies
-  # GET /edu_subsidies.json
   def index
     @edu_subsidies = EduSubsidy.all
   end
 
   # GET /edu_subsidies/1
-  # GET /edu_subsidies/1.json
   def show
   end
 
@@ -17,51 +16,51 @@ class EduSubsidiesController < ApplicationController
     @edu_subsidy = EduSubsidy.new
   end
 
-  # GET /edu_subsidies/1/edit
-  def edit
-  end
-
   # POST /edu_subsidies
-  # POST /edu_subsidies.json
   def create
     @edu_subsidy = EduSubsidy.new(edu_subsidy_params)
 
-    respond_to do |format|
-      if @edu_subsidy.save
-        format.html { redirect_to @edu_subsidy, notice: 'Edu subsidy was successfully created.' }
-        format.json { render :show, status: :created, location: @edu_subsidy }
-      else
-        format.html { render :new }
-        format.json { render json: @edu_subsidy.errors, status: :unprocessable_entity }
-      end
+    if @edu_subsidy.save
+      id = @edu_subsidy.id
+      citizen = Citizen.find(@edu_subsidy.citizen_id)
+      citizen.update_attribute(:edu_subsidy_id, id)
+      flash[:success] = 'Succesfully registered for Education Subsidy'
+      redirect_to citizen
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /edu_subsidies/1
-  # PATCH/PUT /edu_subsidies/1.json
   def update
-    respond_to do |format|
-      if @edu_subsidy.update(edu_subsidy_params)
-        format.html { redirect_to @edu_subsidy, notice: 'Edu subsidy was successfully updated.' }
-        format.json { render :show, status: :ok, location: @edu_subsidy }
-      else
-        format.html { render :edit }
-        format.json { render json: @edu_subsidy.errors, status: :unprocessable_entity }
-      end
+    if @edu_subsidy.update(edu_subsidy_params)
+      flash[:success] = 'Succesfully updated subsidy subscription'
+      redirect_to @edu_subsidy
+    else
+      render :edit
     end
   end
 
   # DELETE /edu_subsidies/1
-  # DELETE /edu_subsidies/1.json
   def destroy
-    @edu_subsidy.destroy
-    respond_to do |format|
-      format.html { redirect_to edu_subsidies_url, notice: 'Edu subsidy was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    id = @edu_subsidy.id
+    citizen = Citizen.find(@edu_subsidy.citizen_id)
+    citizen.update_attribute(:edu_subsidy_id, nil)
+    ActiveRecord::Base.connection.query("
+      DELETE FROM edu_subsidies WHERE id = #{id}
+    ")
+    flash[:success] = 'Succesfully unregistered from Education subsidy'
+    redirect_to citizen
   end
 
   private
+    def admin_logged_in
+      unless admin_logged_in?
+        flash[:warning] = "Please log in as admin first"
+        redirect_to login_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_edu_subsidy
       @edu_subsidy = EduSubsidy.find(params[:id])

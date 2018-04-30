@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  root to: 'site#index'
-
   get '/subsidies/lpg',     to: 'lpg_subsidies#index'
   get '/subsidies/elec',    to: 'elec_subsidies#index'
   get '/subsidies/edu',     to: 'edu_subsidies#index'
+
+  root to: 'site#index'
+  get '/about',      to: 'site#about'
 end

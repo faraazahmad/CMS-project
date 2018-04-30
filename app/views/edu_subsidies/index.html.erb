@@ -1,27 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <br><br><br>
+  <h1 class="title is-striped is-size-1">Education subsidy subscribers</h1>
 
-<h1>Edu Subsidies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Citizen</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @edu_subsidies.each do |edu_subsidy| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= edu_subsidy.citizen %></td>
-        <td><%= link_to 'Show', edu_subsidy %></td>
-        <td><%= link_to 'Edit', edit_edu_subsidy_path(edu_subsidy) %></td>
-        <td><%= link_to 'Destroy', edu_subsidy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>UID</th>
+        <th>Name</th>
+        <th>Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @edu_subsidies.each do |edu_subsidy| %>
+        <tr>
+          <td><%= edu_subsidy.citizen_id %></td>
+          <td><%= Citizen.find(edu_subsidy.citizen_id).name %></td>            
+          <td>
+            <%= link_to 'Remove', 
+                edu_subsidy, 
+                method: :delete, 
+                data: { confirm: 'Are you sure?' }, 
+                class: "button" %>      
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Edu Subsidy', new_edu_subsidy_path %>
+  <br>
+
+  <%= link_to 'New Subscription', new_edu_subsidy_path, class: "button is-link" %>
+</div>

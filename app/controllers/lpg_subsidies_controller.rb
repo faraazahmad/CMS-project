@@ -16,10 +16,6 @@ class LpgSubsidiesController < ApplicationController
     @lpg_subsidy = LpgSubsidy.new
   end
 
-  # GET /lpg_subsidies/1/edit
-  def edit
-  end
-
   # POST /lpg_subsidies
   def create
     @lpg_subsidy = LpgSubsidy.new(lpg_subsidy_params)
@@ -37,14 +33,11 @@ class LpgSubsidiesController < ApplicationController
 
   # PATCH/PUT /lpg_subsidies/1
   def update
-    respond_to do |format|
-      if @lpg_subsidy.update(lpg_subsidy_params)
-        format.html { redirect_to @lpg_subsidy, notice: 'Lpg subsidy was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lpg_subsidy }
-      else
-        format.html { render :edit }
-        format.json { render json: @lpg_subsidy.errors, status: :unprocessable_entity }
-      end
+    if @lpg_subsidy.update(lpg_subsidy_params)
+      flash[:success] = 'Succesfully updated subsidy subscription'
+      redirect_to @lpg_subsidy
+    else
+      render :edit
     end
   end
 
@@ -63,11 +56,11 @@ class LpgSubsidiesController < ApplicationController
   private
 
     def admin_logged_in
-    unless admin_logged_in?
-      flash[:warning] = "Please log in as admin first"
-      redirect_to login_path
+      unless admin_logged_in?
+        flash[:warning] = "Please log in as admin first"
+        redirect_to login_path
+      end
     end
-  end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_lpg_subsidy

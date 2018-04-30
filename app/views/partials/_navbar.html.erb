@@ -1,7 +1,7 @@
-<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+<nav class="navbar is-danger" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
+          <a class="navbar-item is-size-4" href="/">
             <strong>
               Citizen Management System
             </strong>
@@ -21,41 +21,29 @@
           </div>
 
           <div class="navbar-end">
-            <a class="navbar-item" href="/">
-              Home
-            </a>
+            <%= link_to "Home", root_path, class: "navbar-item" %>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                Benefits
+                Subsidies
               </a>
               <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item">
-                  Education
-                </a>
-                <a class="navbar-item">
-                  Healthcare
-                </a>
-                <a class="navbar-item">
-                  Subsidies
-                </a>
+                <%= link_to "Education", subsidies_edu_path, class: "navbar-item" %>
+                <%= link_to "Electricity", subsidies_elec_path, class: "navbar-item" %>
+                <%= link_to "LPG", subsidies_lpg_path, class: "navbar-item" %>
               </div>
             </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                About Us
-              </a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item">
-                  Vision
-                </a>
-                <a class="navbar-item">
-                  Mission
-                </a>
-              </div>
-            </div>
+            <%= link_to "About Us", about_path, class: "navbar-item" %>
             <% if logged_in? %>
               <% if current_citizen.admin %>
-                <%= link_to "Register", new_citizen_path, class: "navbar-item" %>
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                    Citizens
+                  </a>
+                  <div class="navbar-dropdown is-boxed">
+                    <%= link_to "List all", citizens_path, class: "navbar-item" %>
+                    <%= link_to "Register", new_citizen_path, class: "navbar-item" %>
+                  </div>
+                </div>
               <% end %>
               <%= link_to "My Profile", current_citizen, class: "navbar-item" %>
               <%= link_to "Log out", logout_path, class: "navbar-item", method: :delete %>

@@ -1,5 +1,5 @@
 #home-tiles {
-    background: linear-gradient( hsl(217, 71%, 53%), #2AF8CD);
+    background: linear-gradient( #ff3860, #FFBA38);
     padding: 2em;
     .is-child {
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -65,4 +65,23 @@
 
 #education {
     background-image: url(image_path('education.jpg'));
+}
+
+.info {
+    padding: 2em;
+    text-shadow: 0 0 10px rgba(0,0,0,1);
+    color: white;
+    h1 {
+        color: white;
+    }
+}
+
+#vision {
+    background-image: url(image_path('vision.jpg'));
+    background-size: cover;
+}
+
+#mission {
+    background-image: url(image_path('mission.jpg'));
+    background-size: cover;
 }

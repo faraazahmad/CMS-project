@@ -1,0 +1,34 @@
+<div class="container">
+  <br><br><br>
+  <h1 class="title is-striped is-size-1">All citizens</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>UID</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Gender</th>
+        <th>Phone No.</th>
+        <th>Admin rights</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @citizens.each do |citizen| %>
+        <tr>
+          <td><%= citizen.id %></td>
+          <td><%= citizen.name %></td>
+          <td><%= citizen.dob %></td>
+          <td><%= citizen.gender %></td>
+          <td><%= citizen.phone_number %></td>
+          <td><%= citizen.admin %></td>     
+          <td>
+            <%= link_to 'View Profile', citizen_path(citizen), class: "button" %>      
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

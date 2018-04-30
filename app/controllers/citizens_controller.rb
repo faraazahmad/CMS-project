@@ -1,6 +1,10 @@
 class CitizensController < ApplicationController
-  before_action :admin_logged_in, only: [:new, :create, :edit, :update]
+  before_action :admin_logged_in, only: [:index, :new, :create, :edit, :update]
   before_action :citizen_logged_in, only: [:show]
+
+  def index
+    @citizens = Citizen.all
+  end
 
   def new
     @citizen = Citizen.new
@@ -9,6 +13,9 @@ class CitizensController < ApplicationController
   def show
     if logged_in? && (current_citizen.admin == true || current_citizen.id = params[:id])
       @citizen = Citizen.find(params[:id])
+      @lpg_subsidy = LpgSubsidy.find_by(citizen_id: params[:id])
+      @elec_subsidy = ElecSubsidy.find_by(citizen_id: params[:id])
+      @edu_subsidy = EduSubsidy.find_by(citizen_id: params[:id])
     else
       flash[:warning] = "You can only view your own details"
       redirect_to current_citizen

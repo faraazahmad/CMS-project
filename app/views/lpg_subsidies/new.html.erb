@@ -1,8 +1,16 @@
 <div class="container">
 	<br><br><br>
-	<h1 class="title is-size-1">New Lpg Subsidy Subscription</h1>
-
-	<%= render 'form', lpg_subsidy: @lpg_subsidy %>
-
-	<%= link_to 'Back', lpg_subsidies_path %>
+	<div class="form-container">
+		<div class="card">
+		  <header class="card-header">
+		    <p class="card-header-title">
+		      New LPG subscription
+		    </p>
+		  </header>
+			<%= render 'form', lpg_subsidy: @lpg_subsidy %>
+			<footer class="card-footer">
+				<%= link_to 'Back', lpg_subsidies_path, class: "card-footer-item" %>
+		  </footer>
+		</div>
+	</div>
 </div>

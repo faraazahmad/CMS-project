@@ -1,5 +1,16 @@
-<h1>New Edu Subsidy</h1>
-
-<%= render 'form', edu_subsidy: @edu_subsidy %>
-
-<%= link_to 'Back', edu_subsidies_path %>
+<div class="container">
+	<br><br><br>
+	<div class="form-container">
+		<div class="card">
+		  <header class="card-header">
+		    <p class="card-header-title">
+		      New Education subscription
+		    </p>
+		  </header>
+			<%= render 'form', edu_subsidy: @edu_subsidy %>
+			<footer class="card-footer">
+				<%= link_to 'Back', edu_subsidies_path, class: "card-footer-item" %>
+		  </footer>
+		</div>
+	</div>
+</div>

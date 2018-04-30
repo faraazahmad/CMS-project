@@ -1,5 +1,7 @@
 {
   "name": "cmsproject",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "animate.css": "^3.6.1"
+  }
 }

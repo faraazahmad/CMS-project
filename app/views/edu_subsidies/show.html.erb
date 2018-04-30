@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Citizen:</strong>
-  <%= @edu_subsidy.citizen %>
-</p>
+  <p>
+    <strong>Citizen:</strong>
+    <%= @edu_subsidy.citizen %>
+  </p>
 
-<%= link_to 'Edit', edit_edu_subsidy_path(@edu_subsidy) %> |
-<%= link_to 'Back', edu_subsidies_path %>
+  <%= link_to 'Edit', edit_edu_subsidy_path(@edu_subsidy) %> |
+  <%= link_to 'Back', edu_subsidies_path %>
+
+</div>

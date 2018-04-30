@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409050955) do
+ActiveRecord::Schema.define(version: 20180430192452) do
 
   create_table "citizens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20180409050955) do
     t.string "password_digest"
     t.text "address"
     t.bigint "lpg_subsidy_id"
+    t.bigint "elec_subsidy_id"
+    t.bigint "edu_subsidy_id"
+    t.index ["edu_subsidy_id"], name: "index_citizens_on_edu_subsidy_id"
+    t.index ["elec_subsidy_id"], name: "index_citizens_on_elec_subsidy_id"
     t.index ["lpg_subsidy_id"], name: "index_citizens_on_lpg_subsidy_id"
     t.index ["phone_number"], name: "index_citizens_on_phone_number", unique: true
   end
@@ -50,6 +54,8 @@ ActiveRecord::Schema.define(version: 20180409050955) do
     t.index ["citizen_id"], name: "index_lpg_subsidies_on_citizen_id"
   end
 
+  add_foreign_key "citizens", "edu_subsidies"
+  add_foreign_key "citizens", "elec_subsidies"
   add_foreign_key "citizens", "lpg_subsidies"
   add_foreign_key "edu_subsidies", "citizens"
   add_foreign_key "elec_subsidies", "citizens"

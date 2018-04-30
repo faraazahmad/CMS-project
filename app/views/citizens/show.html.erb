@@ -1,4 +1,4 @@
-<section class="hero is-info">
+<section class="hero is-danger">
   <div class="hero-body">
     <div class="container">
       <div class="columns">
@@ -13,7 +13,7 @@
         </div>
         <div class="column is-2">
           <% if logged_in? && current_citizen.admin %>
-            <%= link_to "Update Details", edit_citizen_path(@citizen), class: "button is-large is-link" %>
+            <%= link_to "Update Details", edit_citizen_path(@citizen), class: "button is-large is-warning" %>
           <% end %>
         </div>
       </div>
@@ -74,7 +74,6 @@
       <strong>Subsidies:</strong>
     </h2>
     <div class="columns">
-
       <div class="column">
         <div class="card">
           <header class="card-header">
@@ -84,14 +83,14 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <% if @citizen.lpg_subsidy_id %>
+              <% if @lpg_subsidy %>
                 <p class="subtitle">
                   <strong>LPG Subsidy ID:</strong>
-                  <%= @citizen.lpg_subsidy_id %>
+                  <%= @lpg_subsidy.id %>
                 </p>
                 <p class="subtitle">
                   <strong>Registration Date: </strong>
-                  <%= LpgSubsidy.find(@citizen.lpg_subsidy_id).created_at %>
+                  <%= @lpg_subsidy.created_at %>
                 </p>
               <% else %>
                 <p class="subtitle">Not registered</p>
@@ -99,9 +98,9 @@
             </div>
           </div>
           <footer class="card-footer">
-            <% if @citizen.lpg_subsidy_id %>
+            <% if @lpg_subsidy %>
               <%= link_to 'Unregister', 
-                    LpgSubsidy.find(@citizen.lpg_subsidy_id), 
+                    @lpg_subsidy, 
                     method: :delete, 
                     data: { confirm: 'Are you sure?' }, 
                     class: "card-footer-item" %>
@@ -123,35 +122,32 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <!--
-              <% if @citizen.lpg_subsidy_id %>
+              <% if @elec_subsidy %>
                 <p class="subtitle">
-                  <strong>LPG Subsidy ID:</strong>
-                  <%= @citizen.lpg_subsidy_id %>
+                  <strong>Electricity Subsidy ID:</strong>
+                  <%= @elec_subsidy.id %>
                 </p>
                 <p class="subtitle">
                   <strong>Registration Date: </strong>
-                  <%= LpgSubsidy.find(@citizen.lpg_subsidy_id).created_at %>
+                  <%= @elec_subsidy.created_at %>
                 </p>
               <% else %>
                 <p class="subtitle">Not registered</p>
-              <% end %>-->
+              <% end %>
             </div>
           </div>
           <footer class="card-footer">
-            <!--
-            <% if @citizen.lpg_subsidy_id %>
+            <% if @elec_subsidy %>
               <%= link_to 'Unregister', 
-                    LpgSubsidy.find(@citizen.lpg_subsidy_id), 
+                    @elec_subsidy, 
                     method: :delete, 
                     data: { confirm: 'Are you sure?' }, 
                     class: "card-footer-item" %>
             <% else %>
               <%= link_to "Register",
-                  new_lpg_subsidy_path,
+                  new_elec_subsidy_path,
                   class: "card-footer-item" %>
             <% end %>
-          -->
           </footer>
         </div>
       </div>
@@ -165,35 +161,32 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <!--
-              <% if @citizen.lpg_subsidy_id %>
+              <% if @edu_subsidy %>
                 <p class="subtitle">
-                  <strong>LPG Subsidy ID:</strong>
-                  <%= @citizen.lpg_subsidy_id %>
+                  <strong>Electricity Subsidy ID:</strong>
+                  <%= @edu_subsidy.id %>
                 </p>
                 <p class="subtitle">
                   <strong>Registration Date: </strong>
-                  <%= LpgSubsidy.find(@citizen.lpg_subsidy_id).created_at %>
+                  <%= @edu_subsidy.created_at %>
                 </p>
               <% else %>
                 <p class="subtitle">Not registered</p>
-              <% end %>-->
+              <% end %>
             </div>
           </div>
           <footer class="card-footer">
-            <!--
-            <% if @citizen.lpg_subsidy_id %>
+            <% if @edu_subsidy %>
               <%= link_to 'Unregister', 
-                    LpgSubsidy.find(@citizen.lpg_subsidy_id), 
+                    @edu_subsidy, 
                     method: :delete, 
                     data: { confirm: 'Are you sure?' }, 
                     class: "card-footer-item" %>
             <% else %>
               <%= link_to "Register",
-                  new_lpg_subsidy_path,
+                  new_edu_subsidy_path,
                   class: "card-footer-item" %>
             <% end %>
-          -->
           </footer>
         </div>
       </div>
